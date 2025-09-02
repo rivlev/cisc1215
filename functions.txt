@@ -1,0 +1,15 @@
+built in:
+print           
+round
+
+strings:
++
+*
+len
+
+from the math module:
+floor
+ceil
+pow
+sqrt
+pi
