@@ -2,6 +2,11 @@ built in:
 print           
 round
 
+types:
+int
+float
+str
+
 strings:
 +
 *
@@ -13,3 +18,5 @@ ceil
 pow
 sqrt
 pi
+
+range
