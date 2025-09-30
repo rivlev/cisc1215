@@ -1,6 +1,11 @@
 built in:
 print           
 round
+range
+
+file i/o:
+open
+.readline()
 
 types:
 int
@@ -11,6 +16,9 @@ strings:
 +
 *
 len
+.strip()
+.lower()
+.upper()
 
 from the math module:
 floor
@@ -19,4 +27,9 @@ pow
 sqrt
 pi
 
-range
+
+operators:
++-*/
+**
++=, -=, *=, /=
+>, >=, <, <=, ==
