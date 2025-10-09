@@ -5,7 +5,9 @@ range
 
 file i/o:
 open
+close
 .readline()
+.write()
 
 types:
 int
@@ -19,6 +21,11 @@ len
 .strip()
 .lower()
 .upper()
+.startswith(<substring>)
+.endswith()
+.count()
+.replace()
+in
 
 from the math module:
 floor
@@ -33,3 +40,11 @@ operators:
 **
 +=, -=, *=, /=
 >, >=, <, <=, ==
+
+
+re:
+search
+string
+sub
+group
+span
