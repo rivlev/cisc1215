@@ -3,6 +3,14 @@ print
 round
 range
 
+lists:
+.append()
+.extend()
+.pop()
+.remove()
+sorted()
+reversed()
+
 file i/o:
 open
 close
@@ -26,6 +34,8 @@ len
 .count()
 .replace()
 in
+.split()
+.join()
 
 from the math module:
 floor
