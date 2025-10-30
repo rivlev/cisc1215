@@ -11,6 +11,9 @@ lists:
 sorted()
 reversed()
 
+dictionaries:
+.get()
+
 file i/o:
 open
 close
