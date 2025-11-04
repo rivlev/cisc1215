@@ -3,14 +3,15 @@ from random import choice
 NUM_GUESSES = 6
 NUM_LETTERS = 5
 
-GREEN_SQUARE = "🟩"
-YELLOW_SQUARE = "🟨"
-GRAY_SQUARE = "⬜"
+GREEN_PREFIX = "\033[42m"
+YELLOW_PREFIX = "\033[43m"
+GRAY_PREFIX = "\033[100m"
+COLOR_POSTFIX = "\033[0m"
 
 def loadDictionary():
     # load legal words that are exactly five letters long
     legal_words = set()
-    for line in open("/workspaces/cisc1215/classcode/words.txt"):
+    for line in open("classcode/words.txt"):
         w = line.strip().lower()
         if len(w) == NUM_LETTERS:
             legal_words.add(w)
@@ -33,7 +34,9 @@ def wordle():
     secret_word_letter_counts = count_letters(secret_word)
 
     for g in range(NUM_GUESSES):
-        guess = input(f"Enter a {NUM_LETTERS}-letter word:\n")
+        guess = input(f"Enter a {NUM_LETTERS}-letter word (guess {g+1}/{NUM_GUESSES}):\n")
+        while len(guess.strip()) != NUM_LETTERS:
+            guess = input(f"{guess} is not a valid word, try again (guess {g+1}/{NUM_GUESSES}):\n")
         if len(guess) != NUM_LETTERS:
             print(f"Invalid guess: All guesses must be {NUM_LETTERS} letters.")
             continue
@@ -42,6 +45,7 @@ def wordle():
             continue
 
         if guess == secret_word:
+            print(GREEN_PREFIX + guess + COLOR_POSTFIX)
             print("You guessed it!")
             break
 
@@ -52,18 +56,18 @@ def wordle():
         # find green letters
         for i, c in enumerate(guess):
             if guess[i] == secret_word[i]:
-                result[i] = GREEN_SQUARE
+                result[i] = GREEN_PREFIX + guess[i] + COLOR_POSTFIX
                 guess_letter_counts[c] -= 1
         for i, c in enumerate(guess):
             if result[i] != '':
                 continue
             if c not in guess_letter_counts or guess_letter_counts[c] == 0:
-                result[i] = GRAY_SQUARE
+                result[i] = GRAY_PREFIX + guess[i] + COLOR_POSTFIX
             else:
-                result[i] = YELLOW_SQUARE
+                result[i] = YELLOW_PREFIX + guess[i] + COLOR_POSTFIX
 
         # print result
-        print(''.join(result))
+        print(''.join(result) + "\n")
 
     print(f"No more guesses. The word was {secret_word}")
 
