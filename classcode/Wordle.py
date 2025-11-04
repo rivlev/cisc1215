@@ -31,7 +31,6 @@ def count_letters(word):
 def wordle():
     legal_words = loadDictionary()
     secret_word = choice(list(legal_words))
-    secret_word = "locks"
     secret_word_letter_counts = count_letters(secret_word)
 
     for g in range(NUM_GUESSES):
