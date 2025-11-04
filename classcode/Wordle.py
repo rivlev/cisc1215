@@ -35,14 +35,8 @@ def wordle():
 
     for g in range(NUM_GUESSES):
         guess = input(f"Enter a {NUM_LETTERS}-letter word (guess {g+1}/{NUM_GUESSES}):\n")
-        while len(guess.strip()) != NUM_LETTERS:
+        while len(guess.strip()) != NUM_LETTERS or guess not in legal_words:
             guess = input(f"{guess} is not a valid word, try again (guess {g+1}/{NUM_GUESSES}):\n")
-        if len(guess) != NUM_LETTERS:
-            print(f"Invalid guess: All guesses must be {NUM_LETTERS} letters.")
-            continue
-        if guess not in legal_words:
-            print("Invalid guess: not in word list.")
-            continue
 
         if guess == secret_word:
             print(GREEN_PREFIX + guess + COLOR_POSTFIX)
